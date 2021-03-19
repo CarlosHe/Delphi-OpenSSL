@@ -193,6 +193,11 @@ begin
     RAND_file_name := GetProcAddress(GetCryptLibHandle, 'RAND_file_name');
     RAND_load_file := GetProcAddress(GetCryptLibHandle, 'RAND_load_file');
     RAND_write_file := GetProcAddress(GetCryptLibHandle, 'RAND_write_file');
+
+    OpenSSL_add_all_algorithms;
+    OpenSSL_add_all_ciphers;
+    OpenSSL_add_all_digests;
+    ERR_load_crypto_strings;
   end;
 end;
 
@@ -206,7 +211,7 @@ end;
 
 initialization
 
-ResetFuncPointers;
+LoadOpenSSLLibraryEx;
 
 finalization
 
