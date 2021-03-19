@@ -211,7 +211,7 @@ end;
 
 initialization
 
-LoadOpenSSLLibraryEx;
+ResetFuncPointers;
 
 finalization
 
