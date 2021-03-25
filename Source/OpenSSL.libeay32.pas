@@ -101,6 +101,7 @@ implementation
 
 {$IFDEF MSWINDOWS}
 
+
 uses
   WinAPI.Windows;
 {$ENDIF}
@@ -165,9 +166,8 @@ end;
 
 function LoadOpenSSLLibraryEx: Boolean;
 begin
-  if GetCryptLibHandle <> 0 then
-    Exit(True);
-  IdSSLOpenSSL.LoadOpenSSLLibrary;
+  if GetCryptLibHandle = 0 then
+    IdSSLOpenSSL.LoadOpenSSLLibrary;
   Result := GetCryptLibHandle <> 0;
   if Result then
   begin
